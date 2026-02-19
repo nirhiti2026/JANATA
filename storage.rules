@@ -1,0 +1,39 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Solutions media uploads
+    match /solutions/{problemId}/images/{allPaths=**} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null 
+        && request.resource.size <= 5 * 1024 * 1024  // 5MB max for images
+        && request.resource.contentType.matches('image/.*');
+    }
+    
+    match /solutions/{problemId}/videos/{allPaths=**} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null 
+        && request.resource.size <= 50 * 1024 * 1024  // 50MB max for videos
+        && request.resource.contentType.matches('video/.*');
+    }
+
+    // Reports media uploads
+    match /reports/{politicianId}/images/{allPaths=**} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null 
+        && request.resource.size <= 5 * 1024 * 1024  // 5MB max for images
+        && request.resource.contentType.matches('image/.*');
+    }
+    
+    match /reports/{politicianId}/videos/{allPaths=**} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null 
+        && request.resource.size <= 50 * 1024 * 1024  // 50MB max for videos
+        && request.resource.contentType.matches('video/.*');
+    }
+
+    // Deny all other uploads
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}
