@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/charity_organization.dart';
 import '../services/firestore_service.dart';
@@ -71,7 +71,7 @@ class _CharityFundingState extends State<CharityFunding> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Header
+
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
@@ -105,7 +105,7 @@ class _CharityFundingState extends State<CharityFunding> {
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: const Text(
-                      '💡 Every donation, no matter the size, makes an impact!',
+                      'ðŸ’¡ Every donation, no matter the size, makes an impact!',
                       style: TextStyle(color: Colors.white, fontSize: 12),
                     ),
                   ),
@@ -113,7 +113,7 @@ class _CharityFundingState extends State<CharityFunding> {
               ),
             ),
             const SizedBox(height: 24),
-            // Organizations List
+
             Text(
               'Featured Organizations',
               style: Theme.of(context).textTheme.titleMedium?.copyWith(
@@ -147,7 +147,7 @@ class _CharityFundingState extends State<CharityFunding> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Organization Header
+
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -199,7 +199,7 @@ class _CharityFundingState extends State<CharityFunding> {
               ],
             ),
             const SizedBox(height: 12),
-            // Mission
+
             Text(
               org.mission,
               style: Theme.of(context).textTheme.bodySmall,
@@ -207,7 +207,7 @@ class _CharityFundingState extends State<CharityFunding> {
               overflow: TextOverflow.ellipsis,
             ),
             const SizedBox(height: 12),
-            // Progress Bar
+
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -248,7 +248,7 @@ class _CharityFundingState extends State<CharityFunding> {
               ],
             ),
             const SizedBox(height: 16),
-            // Buttons Row
+
             Row(
               children: [
                 Expanded(
@@ -398,7 +398,7 @@ class _CharityFundingState extends State<CharityFunding> {
                   ),
                 ),
                 const SizedBox(height: 20),
-                // Amount
+
                 TextField(
                   controller: amountCtrl,
                   decoration: InputDecoration(
@@ -411,7 +411,7 @@ class _CharityFundingState extends State<CharityFunding> {
                   keyboardType: TextInputType.number,
                 ),
                 const SizedBox(height: 12),
-                // Payment Method
+
                 DropdownButtonFormField<String>(
                   value: selectedMethod,
                   items: ['Bank Transfer', 'Mobile Payment', 'Cash']
@@ -430,7 +430,7 @@ class _CharityFundingState extends State<CharityFunding> {
                   ),
                 ),
                 const SizedBox(height: 12),
-                // Donor Name
+
                 TextField(
                   controller: nameCtrl,
                   decoration: InputDecoration(
@@ -441,7 +441,7 @@ class _CharityFundingState extends State<CharityFunding> {
                   ),
                 ),
                 const SizedBox(height: 12),
-                // Donor Email
+
                 TextField(
                   controller: emailCtrl,
                   decoration: InputDecoration(
@@ -453,7 +453,7 @@ class _CharityFundingState extends State<CharityFunding> {
                   keyboardType: TextInputType.emailAddress,
                 ),
                 const SizedBox(height: 12),
-                // Message
+
                 TextField(
                   controller: messageCtrl,
                   decoration: InputDecoration(

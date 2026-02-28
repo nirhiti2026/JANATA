@@ -1,9 +1,7 @@
-/// Utility class for formatting Firebase error messages into user-friendly messages
-class FirebaseErrorFormatter {
+﻿class FirebaseErrorFormatter {
   static String formatAuthError(dynamic error) {
     final message = error.toString().toLowerCase();
 
-    // Email/Password errors
     if (message.contains('user-not-found') || message.contains('invalid-email')) {
       return 'Email address not found. Please check and try again.';
     }
@@ -29,7 +27,6 @@ class FirebaseErrorFormatter {
       return 'This operation is not allowed. Please contact support.';
     }
 
-    // Firestore errors
     if (message.contains('permission-denied')) {
       return 'You do not have permission to perform this action.';
     }
@@ -52,14 +49,12 @@ class FirebaseErrorFormatter {
       return 'Operation took too long. Please try again.';
     }
 
-    // Network errors
     if (message.contains('network')) {
       return 'Network connection error. Please check your internet connection.';
     }
 
-    // Generic error
     if (error.toString().isNotEmpty) {
-      // Extract just the meaningful part
+
       String errorMsg = error.toString();
       if (errorMsg.contains(']')) {
         errorMsg = errorMsg.split(']').last.trim();

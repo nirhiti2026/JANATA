@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
@@ -25,7 +25,7 @@ class _SubmitSolutionsEnhancedState extends State<SubmitSolutionsEnhanced> {
   @override
   void initState() {
     super.initState();
-    // Listen to text changes so button enables/disables automatically
+
     _solutionCtrl.addListener(() => setState(() {}));
   }
 
@@ -95,7 +95,7 @@ class _SubmitSolutionsEnhancedState extends State<SubmitSolutionsEnhanced> {
       _showError('Please select a problem');
       return;
     }
-    // Solution description is required; media is optional
+
     if (_solutionCtrl.text.trim().isEmpty) {
       _showError('Please enter a solution description.');
       return;
@@ -112,37 +112,32 @@ class _SubmitSolutionsEnhancedState extends State<SubmitSolutionsEnhanced> {
       String? imageUrl;
       String? videoUrl;
 
-      // Try to upload image if selected (media is optional, skip if fails)
       if (_selectedImage != null) {
         try {
           imageUrl = await fs.uploadSolutionImage(_selectedProblem!.id, _selectedImage!);
         } catch (e) {
-          // Silently skip image upload if it fails
-          // Solution will be submitted with description only
+
           final errorMsg = e.toString().toLowerCase();
           if (errorMsg.contains('permission')) {
             _showError('Image upload permission denied. Submitting solution description only.');
           }
-          // Otherwise just skip the media silently
+
         }
       }
 
-      // Try to upload video if selected (media is optional, skip if fails)
       if (_selectedVideo != null) {
         try {
           videoUrl = await fs.uploadSolutionVideo(_selectedProblem!.id, _selectedVideo!);
         } catch (e) {
-          // Silently skip video upload if it fails
-          // Solution will be submitted with description only
+
           final errorMsg = e.toString().toLowerCase();
           if (errorMsg.contains('permission')) {
             _showError('Video upload permission denied. Submitting solution description only.');
           }
-          // Otherwise just skip the media silently
+
         }
       }
 
-      // Submit solution with or without media (description is always included)
       await fs.submitSolutionWithMedia(
         _selectedProblem!.id,
         _solutionCtrl.text.trim(),
@@ -176,7 +171,6 @@ class _SubmitSolutionsEnhancedState extends State<SubmitSolutionsEnhanced> {
   Future<void> _markAsResolved() async {
     if (_selectedProblem == null) return;
 
-    // Solution description is required to mark as resolved; media is optional
     if (_solutionCtrl.text.trim().isEmpty) {
       _showError('Please enter a solution description before marking as resolved.');
       return;
@@ -190,7 +184,6 @@ class _SubmitSolutionsEnhancedState extends State<SubmitSolutionsEnhanced> {
     try {
       final fs = Provider.of<FirestoreService>(context, listen: false);
 
-      // Update problem status to 'solved'
       await fs.updateProblemStatus(_selectedProblem!.id, 'solved');
 
       setState(() {
@@ -381,7 +374,7 @@ class _SubmitSolutionsEnhancedState extends State<SubmitSolutionsEnhanced> {
                 ),
                 if (_selectedProblem != null) ...[
                   const SizedBox(height: 24),
-                  // Problem Details Card
+
                   Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
@@ -409,7 +402,7 @@ class _SubmitSolutionsEnhancedState extends State<SubmitSolutionsEnhanced> {
                     ),
                   ),
                   const SizedBox(height: 24),
-                  // Solution Text
+
                   Text(
                     'Solution Description',
                     style: Theme.of(context).textTheme.titleSmall?.copyWith(
@@ -432,7 +425,7 @@ class _SubmitSolutionsEnhancedState extends State<SubmitSolutionsEnhanced> {
                     minLines: 3,
                   ),
                   const SizedBox(height: 20),
-                  // Media Upload Section
+
                   Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
@@ -456,7 +449,7 @@ class _SubmitSolutionsEnhancedState extends State<SubmitSolutionsEnhanced> {
                           ],
                         ),
                         const SizedBox(height: 16),
-                        // Image Upload
+
                         Row(
                           children: [
                             Expanded(
@@ -490,7 +483,7 @@ class _SubmitSolutionsEnhancedState extends State<SubmitSolutionsEnhanced> {
                           ],
                         ),
                         const SizedBox(height: 12),
-                        // Video Upload
+
                         Row(
                           children: [
                             Expanded(
@@ -527,7 +520,7 @@ class _SubmitSolutionsEnhancedState extends State<SubmitSolutionsEnhanced> {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  // Error/Success Message
+
                   if (_message.isNotEmpty)
                     Container(
                       padding: const EdgeInsets.all(12),
@@ -567,10 +560,10 @@ class _SubmitSolutionsEnhancedState extends State<SubmitSolutionsEnhanced> {
                       ),
                     ),
                   const SizedBox(height: 20),
-                  // Role-based Buttons
+
                   if (_selectedProblem != null)
                     if (_selectedProblem!.assignedTo == uid)
-                      // Assigned politician: Show both buttons
+
                       Row(
                         children: [
                           Expanded(
@@ -635,7 +628,7 @@ class _SubmitSolutionsEnhancedState extends State<SubmitSolutionsEnhanced> {
                         ],
                       )
                     else
-                      // Unassigned politician: Show only Submit Solution
+
                       SizedBox(
                         width: double.infinity,
                         height: 50,

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'services/auth_service.dart';
 import 'services/firestore_service.dart';
@@ -37,7 +37,7 @@ class Root extends StatelessWidget {
       stream: auth.authStateChanges(),
       initialData: null,
       builder: (context, snapshot) {
-        // Route to home if user is logged in, otherwise show login
+
         if (snapshot.hasData) {
           return const Home();
         }

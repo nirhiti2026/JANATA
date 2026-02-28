@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../services/firestore_service.dart';
 import '../services/auth_service.dart';
@@ -22,7 +22,7 @@ class AssignedProblems extends StatelessWidget {
                 children: const [
                   Icon(Icons.cloud_off, size: 48, color: Colors.grey),
                   SizedBox(height: 8),
-                  Text('Firestore unavailable — no assigned problems in demo mode', style: TextStyle(color: Colors.grey)),
+                  Text('Firestore unavailable â€” no assigned problems in demo mode', style: TextStyle(color: Colors.grey)),
                 ],
               ),
             );

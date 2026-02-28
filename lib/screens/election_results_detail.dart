@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../services/firestore_service.dart';
 import '../models/election_result.dart';
@@ -67,7 +67,7 @@ class _ElectionResultsDetailState extends State<ElectionResultsDetail> {
               ),
             );
           }
-          // Sort by electionYear descending
+
           results.sort((a, b) => b.electionYear.compareTo(a.electionYear));
           return SingleChildScrollView(
             padding: const EdgeInsets.all(12.0),

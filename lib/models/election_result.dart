@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+﻿import 'package:cloud_firestore/cloud_firestore.dart';
 
 class ElectionResult {
   final String id;
@@ -9,7 +9,7 @@ class ElectionResult {
   final int votes;
   final int? totalVotesCast;
   final double? votePercentage;
-  final String position; // e.g., 'Mayor', 'Ward Councilor', 'Representative'
+  final String position; 
   final int electionYear;
   final String? notes;
   final Timestamp? createdAt;

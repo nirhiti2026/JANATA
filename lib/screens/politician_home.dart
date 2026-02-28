@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import '../models/user_model.dart';
 import '../services/auth_service.dart';
 import 'package:provider/provider.dart';
@@ -8,7 +8,6 @@ import 'submit_solutions_enhanced.dart';
 import 'charity_funding.dart';
 import 'edit_profile.dart';
 import 'change_password.dart';
-
 
 class PoliticianHome extends StatefulWidget {
   final JanataUser profile;

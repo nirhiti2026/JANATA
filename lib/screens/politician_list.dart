@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../services/firestore_service.dart';
 import 'politician_profile.dart';
@@ -57,8 +57,7 @@ class _PoliticianListState extends State<PoliticianList> {
                 }
                 if (!snapshot.hasData) return const Center(child: CircularProgressIndicator());
                 var items = snapshot.data ?? [];
-                
-                // Apply search filter
+
                 final q = _searchCtrl.text.trim().toLowerCase();
                 if (q.isNotEmpty) {
                   items = items

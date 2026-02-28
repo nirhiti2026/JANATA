@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../services/auth_service.dart';
 import '../models/user_model.dart';
@@ -160,8 +160,7 @@ class _EditProfileState extends State<EditProfile> {
                             province: _provinceCtrl.text.trim(),
                           );
                           setState(() => _message = 'Profile Saved');
-                          
-                          // Create updated profile and return it
+
                           await Future.delayed(const Duration(milliseconds: 500));
                           if (!mounted) return;
                           final updatedProfile = JanataUser(

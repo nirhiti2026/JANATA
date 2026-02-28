@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../services/auth_service.dart';
 import '../models/user_model.dart';
@@ -37,7 +37,7 @@ class _PoliticianProfileState extends State<PoliticianProfile> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Header Card with Profile Picture
+
                 Card(
                   elevation: 2,
                   shape: RoundedRectangleBorder(
@@ -47,7 +47,7 @@ class _PoliticianProfileState extends State<PoliticianProfile> {
                     padding: const EdgeInsets.all(20.0),
                     child: Column(
                       children: [
-                        // Profile Avatar
+
                         Container(
                           width: 100,
                           height: 100,
@@ -62,7 +62,7 @@ class _PoliticianProfileState extends State<PoliticianProfile> {
                           ),
                         ),
                         const SizedBox(height: 16),
-                        // Name
+
                         Text(
                           profile.name,
                           style: const TextStyle(
@@ -72,7 +72,7 @@ class _PoliticianProfileState extends State<PoliticianProfile> {
                           textAlign: TextAlign.center,
                         ),
                         const SizedBox(height: 8),
-                        // Role Badge
+
                         Container(
                           padding: const EdgeInsets.symmetric(
                             horizontal: 16,
@@ -98,7 +98,6 @@ class _PoliticianProfileState extends State<PoliticianProfile> {
                 ),
                 const SizedBox(height: 24),
 
-                // Basic Information Section
                 _buildSectionTitle('Basic Information', Icons.info_outline),
                 const SizedBox(height: 12),
                 _buildInfoCard(
@@ -130,7 +129,6 @@ class _PoliticianProfileState extends State<PoliticianProfile> {
                 ),
                 const SizedBox(height: 24),
 
-                // Bio Section
                 if (profile.bio != null && profile.bio!.isNotEmpty) ...[
                   _buildSectionTitle('About', Icons.description),
                   const SizedBox(height: 12),
@@ -154,7 +152,6 @@ class _PoliticianProfileState extends State<PoliticianProfile> {
                   const SizedBox(height: 24),
                 ],
 
-                // Professional Information Section
                 if ((profile.education != null && profile.education!.isNotEmpty) ||
                     (profile.works != null && profile.works!.isNotEmpty)) ...[
                   _buildSectionTitle('Professional', Icons.work_outline),
@@ -178,7 +175,6 @@ class _PoliticianProfileState extends State<PoliticianProfile> {
                   const SizedBox(height: 24),
                 ],
 
-                // Action Buttons
                 _buildSectionTitle('Actions', Icons.touch_app),
                 const SizedBox(height: 12),
                 SizedBox(

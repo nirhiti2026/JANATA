@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+﻿import 'package:cloud_firestore/cloud_firestore.dart';
 
 class PoliticianComplaint {
   final String id;
@@ -7,8 +7,8 @@ class PoliticianComplaint {
   final String citizenId;
   final String complaintReason;
   final String description;
-  final String complaintType; // 'Urgent', 'Normal'
-  final String status; // 'pending', 'reviewed', 'resolved'
+  final String complaintType; 
+  final String status; 
   final Timestamp createdAt;
 
   PoliticianComplaint({

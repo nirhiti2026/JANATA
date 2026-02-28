@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/problem.dart';
 import '../services/firestore_service.dart';
@@ -34,7 +34,7 @@ class _ProblemListState extends State<ProblemList> {
       }
       setState(() => _politicianNames = map);
     } catch (_) {
-      // demo mode or unavailable - ignore
+
     }
   }
 

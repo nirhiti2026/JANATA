@@ -1,8 +1,8 @@
-class JanataUser {
+﻿class JanataUser {
   final String uid;
   final String name;
   final String email;
-  final String role; // 'citizen' or 'politician'
+  final String role; 
   final String? bio;
   final String? education;
   final String? works;

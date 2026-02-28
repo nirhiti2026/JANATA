@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../utils/error_formatter.dart';
 
@@ -42,7 +42,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
     });
 
     try {
-      // Get current user
+
       final currentUser = FirebaseAuth.instance.currentUser;
       if (currentUser == null) {
         throw Exception('User not found');
@@ -53,7 +53,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
         throw Exception('Email not found');
       }
 
-      // Verify current password by trying to reauthenticate
       try {
         await currentUser.reauthenticateWithCredential(
           EmailAuthProvider.credential(
@@ -71,7 +70,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
         rethrow;
       }
 
-      // Update password
       await currentUser.updatePassword(_newPasswordController.text.trim());
 
       setState(() {
@@ -81,7 +79,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
         _confirmPasswordController.clear();
       });
 
-      // Show success snackbar
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
@@ -92,7 +89,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
         );
       }
 
-      // Go back after 2 seconds
       await Future.delayed(const Duration(seconds: 2));
       if (mounted) {
         Navigator.of(context).pop();
@@ -147,7 +143,7 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Header
+
               Container(
                 margin: const EdgeInsets.only(bottom: 30),
                 child: Column(
@@ -171,7 +167,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 ),
               ),
 
-              // Error Message
               if (_errorMessage != null)
                 Container(
                   padding: const EdgeInsets.all(12),
@@ -198,7 +193,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                   ),
                 ),
 
-              // Success Message
               if (_successMessage != null)
                 Container(
                   padding: const EdgeInsets.all(12),
@@ -225,7 +219,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                   ),
                 ),
 
-              // Current Password Field
               Padding(
                 padding: const EdgeInsets.only(bottom: 20),
                 child: TextFormField(
@@ -258,7 +251,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 ),
               ),
 
-              // New Password Field
               Padding(
                 padding: const EdgeInsets.only(bottom: 20),
                 child: TextFormField(
@@ -291,7 +283,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 ),
               ),
 
-              // Confirm Password Field
               Padding(
                 padding: const EdgeInsets.only(bottom: 30),
                 child: TextFormField(
@@ -324,7 +315,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 ),
               ),
 
-              // Change Password Button
               SizedBox(
                 width: double.infinity,
                 height: 50,
@@ -357,7 +347,6 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                 ),
               ),
 
-              // Info Box
               Padding(
                 padding: const EdgeInsets.only(top: 20),
                 child: Container(
@@ -385,10 +374,10 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        '• Use at least 6 characters\n'
-                        '• Mix uppercase and lowercase letters\n'
-                        '• Include numbers for better security\n'
-                        '• Avoid using personal information',
+                        'â€¢ Use at least 6 characters\n'
+                        'â€¢ Mix uppercase and lowercase letters\n'
+                        'â€¢ Include numbers for better security\n'
+                        'â€¢ Avoid using personal information',
                         style: TextStyle(
                           color: Colors.blue.shade700,
                           fontSize: 13,

@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+﻿import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Problem {
   final String id;
@@ -9,7 +9,7 @@ class Problem {
   final String problemType;
   final String citizenId;
   final String? assignedTo;
-  final String status; // pending, solving, solved
+  final String status; 
   final String? solution;
   final String? solutionImage;
   final String? solutionVideo;

@@ -1,15 +1,11 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+﻿import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'dart:io';
 import '../models/problem.dart';
 import '../models/election_result.dart';
 
-/// Service layer for Firestore database operations
-/// Handles all CRUD operations for problems, politicians, elections, complaints, and donations
 class FirestoreService {
   final FirebaseFirestore _db = FirebaseFirestore.instance;
-
-  // ============== POLITICIAN QUERIES ==============
 
   Stream<List<Map<String, dynamic>>> streamPoliticians() {
     return _db.collection('users').where('role', isEqualTo: 'politician').snapshots().map((snap) =>
@@ -20,8 +16,6 @@ class FirestoreService {
     final snap = await _db.collection('users').where('role', isEqualTo: 'politician').get();
     return snap.docs.map((d) => {'uid': d.id, ...d.data()}).toList();
   }
-
-  // ============== PROBLEM QUERIES ==============
 
   Future<void> createProblem(Problem p) async {
     await _db.collection('problems').add(p.toMap());
@@ -68,8 +62,6 @@ class FirestoreService {
     await _db.collection('problems').doc(problemId).update({'solution': solutionText, 'status': 'solved'});
   }
 
-  // ============== ELECTION RESULTS QUERIES ==============
-
   Stream<List<ElectionResult>> streamElectionResultsByPolitician(String politicianName) {
     return _db
         .collection('election_results')
@@ -105,8 +97,6 @@ class FirestoreService {
   Future<void> deleteElectionResult(String resultId) async {
     await _db.collection('election_results').doc(resultId).delete();
   }
-
-  // ============== MEDIA UPLOADS ==============
 
   Future<String> uploadSolutionImage(String problemId, File imageFile) async {
     final timestamp = DateTime.now().millisecondsSinceEpoch;
@@ -166,8 +156,6 @@ class FirestoreService {
     });
   }
 
-  // ============== POLITICIAN COMPLAINTS ==============
-
   Future<void> submitPoliticianComplaint({
     required String politicianId,
     required String politicianName,
@@ -203,8 +191,6 @@ class FirestoreService {
             snap.docs.map((d) => {'id': d.id, ...d.data()}).toList());
   }
 
-  // ============== DONATIONS & CHARITY ==============
-
   Future<void> submitDonation({
     required double amount,
     required String organizationId,
@@ -214,7 +200,7 @@ class FirestoreService {
     required String paymentMethod,
     String? message,
   }) async {
-    // Save donation record
+
     await _db.collection('donations').add({
       'amount': amount,
       'organizationId': organizationId,
@@ -227,7 +213,6 @@ class FirestoreService {
       'createdAt': Timestamp.now(),
     });
 
-    // Update organization's total collected amount
     final orgDoc = await _db.collection('charity_organizations').doc(organizationId).get();
     if (orgDoc.exists) {
       final currentAmount = (orgDoc.data()?['currentAmountCollected'] as num?)?.toDouble() ?? 0;

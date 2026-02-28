@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 
 class ElectionResults extends StatelessWidget {
   const ElectionResults({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Demo placeholder - can be replaced with charts/data later.
+
     final items = [
       {'name': 'Politician A', 'votes': 1240},
       {'name': 'Politician B', 'votes': 980},

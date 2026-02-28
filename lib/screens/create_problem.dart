@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../models/problem.dart';
@@ -33,7 +33,7 @@ class _CreateProblemState extends State<CreateProblem> {
     try {
       final list = await fs.getPoliticiansOnce();
       if (list.isEmpty) {
-        // Fallback: provide a demo politician when Firestore is empty or unavailable
+
         setState(() => _politicians = [
               {'uid': 'dev-politician', 'name': 'Demo Politician'}
             ]);
@@ -41,7 +41,7 @@ class _CreateProblemState extends State<CreateProblem> {
         setState(() => _politicians = list);
       }
     } catch (e) {
-      // Firestore likely unavailable (no config). Provide demo politician for testing.
+
       setState(() => _politicians = [
             {'uid': 'dev-politician', 'name': 'Demo Politician'}
           ]);

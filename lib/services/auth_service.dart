@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -19,7 +19,7 @@ class AuthService {
 
   Future<UserCredential> signUp(String name, String email, String password, String role) async {
     try {
-      // Create Firebase auth user with 15-second timeout
+
       final cred = await _auth
           .createUserWithEmailAndPassword(email: email, password: password)
           .timeout(const Duration(seconds: 15), 
@@ -34,7 +34,7 @@ class AuthService {
       );
 
       try {
-        // Save user profile to Firestore
+
         await _db
             .collection('users')
             .doc(user.uid)
@@ -42,11 +42,11 @@ class AuthService {
             .timeout(const Duration(seconds: 15),
               onTimeout: () => throw Exception('Profile save timed out. Please try again.'));
       } on FirebaseException catch (fe) {
-        // If Firestore write fails, rollback by deleting the auth user
+
         try {
           await user.delete();
         } catch (e) {
-          // Ignore cleanup errors
+
         }
 
         if (fe.code == 'permission-denied') {
@@ -92,10 +92,9 @@ class AuthService {
     if (phone != null) updates['phone'] = phone;
     if (gender != null) updates['gender'] = gender;
     if (province != null) updates['province'] = province;
-    
+
     if (updates.isNotEmpty) {
       await _db.collection('users').doc(uid).update(updates);
     }
   }
 } 
-

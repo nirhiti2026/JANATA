@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
@@ -112,14 +112,13 @@ class _ReportPoliticianState extends State<ReportPolitician> {
         throw Exception('Not logged in');
       }
 
-      // Upload media if selected
       String? imageUrl;
       String? videoUrl;
-      
+
       if (_selectedImage != null) {
         imageUrl = await fs.uploadReportImage(widget.politicianId, _selectedImage!);
       }
-      
+
       if (_selectedVideo != null) {
         videoUrl = await fs.uploadReportVideo(widget.politicianId, _selectedVideo!);
       }
@@ -181,7 +180,7 @@ class _ReportPoliticianState extends State<ReportPolitician> {
                 style: Theme.of(context).textTheme.bodySmall,
               ),
               const SizedBox(height: 24),
-              // Complaint Reason
+
               Text(
                 'Complaint Reason *',
                 style: Theme.of(context).textTheme.labelLarge?.copyWith(
@@ -210,7 +209,7 @@ class _ReportPoliticianState extends State<ReportPolitician> {
                 validator: (v) => v == null ? 'Please select a reason' : null,
               ),
               const SizedBox(height: 20),
-              // Complaint Type
+
               Text(
                 'Complaint Type *',
                 style: Theme.of(context).textTheme.labelLarge?.copyWith(
@@ -239,7 +238,7 @@ class _ReportPoliticianState extends State<ReportPolitician> {
                 validator: (v) => v == null ? 'Please select type' : null,
               ),
               const SizedBox(height: 20),
-              // Description
+
               Text(
                 'Detailed Description *',
                 style: Theme.of(context).textTheme.labelLarge?.copyWith(
@@ -271,7 +270,7 @@ class _ReportPoliticianState extends State<ReportPolitician> {
                 },
               ),
               const SizedBox(height: 24),
-              // Media Upload Section
+
               Text(
                 'Evidence (Optional)',
                 style: Theme.of(context).textTheme.labelLarge?.copyWith(
@@ -299,7 +298,7 @@ class _ReportPoliticianState extends State<ReportPolitician> {
                 ],
               ),
               const SizedBox(height: 12),
-              // Media Preview
+
               if (_imageFileName != null || _videoFileName != null)
                 Container(
                   padding: const EdgeInsets.all(12),
@@ -353,7 +352,7 @@ class _ReportPoliticianState extends State<ReportPolitician> {
                   ),
                 ),
               const SizedBox(height: 24),
-              // Message
+
               if (_message.isNotEmpty)
                 Container(
                   padding: const EdgeInsets.all(12),
@@ -393,7 +392,7 @@ class _ReportPoliticianState extends State<ReportPolitician> {
                   ),
                 ),
               const SizedBox(height: 20),
-              // Submit Button
+
               SizedBox(
                 width: double.infinity,
                 height: 50,
@@ -427,7 +426,7 @@ class _ReportPoliticianState extends State<ReportPolitician> {
                 ),
               ),
               const SizedBox(height: 16),
-              // Info message
+
               Container(
                 padding: const EdgeInsets.all(12),
                 decoration: BoxDecoration(
